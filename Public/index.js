@@ -6,6 +6,10 @@ document.querySelector(".search-btn").onclick = function () {
     .post(`http://localhost:4000/get-pokemon/`, { pokemon })
     .then(function (response) {
       const data = response.data;
+      if (data === false) {
+        alert("You can only have 6 pokemon in your party!!");
+        return;
+      }
       console.log(response.data);
       const partyWrapper = document.querySelector(".party");
       partyWrapper.innerHTML = "";
